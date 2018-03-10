@@ -1,14 +1,14 @@
 import unittest
 
-from libs.Kambili import Kambili
+from libs.kambili import Kambili
 
 class KambiliTest(unittest.TestCase):
     def setUp(self):
         self.kambili = Kambili()
 
     def test_sample(self):
-        opts = self.kambili.generate_menu()
-        self.assertEqual(opts, 'Hello World')
+        menu_plan = self.kambili.generate_menu()
+        self.assertEqual(menu_plan[0].menu_type, "Breakfast")
 
 if __name__ == '__main__':
     unittest.main()
