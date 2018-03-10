@@ -1,2 +1,2 @@
-unittest2py3k
+unittest2
 setuptools
