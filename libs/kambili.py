@@ -1,7 +1,6 @@
-import datasource
 import random
-from constants import Day
-from constants import MealType
+from .constants import Day
+from .constants import MealType
 
 
 class Kambili:
