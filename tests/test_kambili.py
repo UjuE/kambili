@@ -1,14 +1,14 @@
 import unittest
 
 from libs.kambili import Kambili
-from libs.kambili import MenuPlan
+from libs.menutypes import MenuPlan
 from unittest.mock import MagicMock
 from libs.datasource import MenuDataSource
 
 
 class KambiliTest(unittest.TestCase):
     def setUp(self):
-        self.datasource = MenuDataSource()
+        self.datasource = MenuDataSource("", "", "", "")
         self.datasource.get_menu_plans = \
             MagicMock(return_value=[
                 MenuPlan("Breakfast", "Salmon and Spinach Omlette"),

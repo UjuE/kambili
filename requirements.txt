@@ -1,3 +1,4 @@
 unittest2
 setuptools
-neo4j-driver
+neomodel
+neo4j-driver==1.5.2
