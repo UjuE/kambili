@@ -10,21 +10,24 @@ class WeekMenu:
     def get(self, day):
         return [x for x in self.day_menu_plans if str(x.get_day()) == str(day)][0]
 
-    @staticmethod
-    def __create_day_menu_plans(menu_plans):
-        meal_types_lists = []
-        for name, member in MealType.__members__.items():
-            meal_types_lists.extend([item for item in menu_plans if str(item.menu_type) == str(name)])
-
-
+    def __create_day_menu_plans(self, menu_plans):
         days_menu_plan = []
         for name, member in Day.__members__.items():
+            meal_types_lists = self.__random_menu_types(menu_plans)
+
             days_menu_plan.append(
                 DayMenuPlan(member,
-                            list(map(lambda menu_plan: random.choice(meal_types_lists), meal_types_lists))
+                            meal_types_lists
                             ))
 
         return days_menu_plan
+
+    def __random_menu_types(self, menu_plans):
+        meal_types_lists = []
+        for name, member in MealType.__members__.items():
+            stuff = [item for item in menu_plans if str(item.menu_type) == str(name)]
+            meal_types_lists.append(random.choice(stuff))
+        return meal_types_lists
 
 
 class DayMenuPlan:

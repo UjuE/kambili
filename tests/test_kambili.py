@@ -1,9 +1,9 @@
 import unittest
+from unittest.mock import MagicMock
 
+from libs.datasource import MenuDataSource
 from libs.kambili import Kambili
 from libs.menutypes import MenuPlan
-from unittest.mock import MagicMock
-from libs.datasource import MenuDataSource
 
 
 class KambiliTest(unittest.TestCase):
@@ -34,6 +34,16 @@ class KambiliTest(unittest.TestCase):
         self.assertIsNotNone(week_menu.get("Saturday"), "Week Menu must have entry for Saturday")
         self.assertIsNotNone(week_menu.get("Sunday"), "Week Menu must have entry for Sunday")
 
+    def test_monday_contains_only_one_of_each_meal_type(self):
+        week_menu = self.kambili.generate_week_menu()
+
+        monday_menu = week_menu.get("Monday")
+        self.assertEqual(len(self.get_meals_with_menu_type("Breakfast", monday_menu)), 1)
+        self.assertEqual(len(self.get_meals_with_menu_type("Lunch", monday_menu)), 1)
+        self.assertEqual(len(self.get_meals_with_menu_type("Dinner", monday_menu)), 1)
+
+    def get_meals_with_menu_type(self, menu_type, day_menu):
+        return [menu for menu in day_menu.menu_plans if menu.menu_type == menu_type]
 
 if __name__ == '__main__':
     unittest.main()
