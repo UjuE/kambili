@@ -1,12 +1,15 @@
 language: python
 python:
-  - "3.6"
-
+- '3.6'
 install:
-  - python3 -m pip install -r requirements.txt
-
+- python3 -m pip install -r requirements.txt
 script:
-  - python3 -m unittest discover -s tests
-
+- python3 -m unittest discover -s tests
 notifications:
-    slack: conversinator:eCJM4feMnddtjb6cmnGIrZYn
+  slack: conversinator:eCJM4feMnddtjb6cmnGIrZYn
+env:
+  global:
+  - NEO_4J_URL=hobby-eceacfkfcpcngbkenilnegbl.dbs.graphenedb.com
+  - NEO_4J_BOLT_PORT=24786
+  - secure: DzN/UDGg1ykfDtTgRMby+fvjBrz10jqslqXgWQj/PLe/iFmJAPoMkcrXbgn11gF2Rtr4seE7j2p2NnSb47sv0ZpdOoT6BQl+54kR4OpeS6OYI7mqCr4cVMEL8AZAd8s413PToSaRf9RP/KC4Z0pQIJYlVP0x2Lr7eYbdH71FMAdeQ4iaKhfieTUt+feZDIV7axkEHcVSXKmhsgalnVC7v2yT54r3m4FLvSdTsig38Fe4fF0D5e+aUbgLt1zDVwVNLWGACKY2Nnrt4AWETANCRhbpzIGSZVNOq3xlexhFT3VzGgoK7BMoGKxmZKYBNdtyqDRIlVhdCbrQ5W5NmsqGr794yeV0spRSmES7N8F2P2Ejmcnp8du21SBH6+Aj2eAoptbnP+0UeciXC1L0xZTfP7ja8+nvL/g3iNRBY2zAQhZoQ4nOzMui1h/WspjcEwxkvo++NPRZ7WYRfbaEnBDXJ/a342x9OoboFbSJhIeYWlsGZI8fL//oljBBqYdpiWoouTrBrsoZsz9DeazxO6v5yfaK7y71Mcn+zOEYI9Obv7ISW0OcCcfkhS63OSxdXQ8LQpqyg1uCvZKFa4Y7TevLCGUnXse7s9ZEgNg3UOu32X3UbR3dC+Dbnil505Mr8P0mq6QVTmJgc0Y+J7svo39CztxqaXxG7/FGcByKy39QEf0=
+  - secure: xaUFBfAS2J7N2hVI3T+NO/9Me2S6KWeDB0Bc6KlsosXscrtBJH2PQa3mTPVdOrQmg6io0Q0CBWupYuMTtW0QbtWIquLx5T80eFUFCsijJUqbtefThxIB2ZMz6p//2/eA2D0NvbNbx33nuORd26Sp97NQaLTqel3kr2Pw/4VuvUJtb86vih8ctujBC/aXry24rZLldKTISpmD0lYLTtXRDjTWb5MIcdvymuMYogz/J/1QSPWnaSFmXB1ajj5q0HM81ji9YIJsxvBtTczRINyj3RCDCW5eWAwcCkPO/VVLtpeQmAOkPcRONQzTJZpUxiTK5J0vcixoq3foNIbsF0qEVIiAy/mmxGLnwb6DIr7AebC5+RWqaTQjoJW1S0A41eNi3KroYGuSWyhVxRwujV1TCo4FQgfNLiXi6tBlH0aQdPzPamQYqT7NoW+LgRjPS0rgrXmkr86wOa4uFn6eoRkMiqcLn2ShPOIxE88gWjLqOXm7HR9LtBJDzJwweTaIIt4liSLKLCgQBUIgq/YlhGFHp/ksnimMLaBMpCgdCD1Z3O10E5eHNvg9qT3dFaMRpIA11VetFlQ+gat1EjuNp4oZZtZ58fyJYijhaeiLndzYrFIFS05LXfrqNhG0+SBhaFSkOjx4HUHQwjVBPpr06s5VvJsGs0+eIJW9C7M+RF4ziLc=
