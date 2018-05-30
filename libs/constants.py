@@ -17,9 +17,3 @@ class Day(AutoName):
     Friday = 5
     Saturday = 6
     Sunday = 7
-
-
-class MealType(AutoName):
-    Breakfast = 1
-    Lunch = 2
-    Dinner = 3

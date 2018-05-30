@@ -21,6 +21,10 @@ class KambiliTest(unittest.TestCase):
                 MenuPlan("Dinner", "Assorted Meat Stew Soup and Bulgar Wheat"),
                 MenuPlan("Dinner", "Fish pepper soup")
             ])
+        self.datasource.get_meal_types = \
+            MagicMock(return_value=[
+                "Breakfast","Lunch","Dinner"
+            ])
         self.kambili = Kambili(self.datasource)
 
     def test_all_days_must_have_menu_plans(self):

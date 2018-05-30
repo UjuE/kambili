@@ -1,19 +1,19 @@
 import random
 
-from libs.constants import Day, MealType
+from libs.constants import Day
 
 
 class WeekMenu:
-    def __init__(self, menu_plans):
-        self.day_menu_plans = self.__create_day_menu_plans(menu_plans)
+    def __init__(self, menu_plans, meal_types):
+        self.day_menu_plans = self.__create_day_menu_plans(meal_types, menu_plans)
 
     def get(self, day):
         return next(iter([x for x in self.day_menu_plans if str(x.get_day()) == str(day)]), None)
 
-    def __create_day_menu_plans(self, menu_plans):
+    def __create_day_menu_plans(self, meal_types, menu_plans):
         days_menu_plan = []
         for name, member in Day.__members__.items():
-            meal_types_lists = self.__random_menu_types(menu_plans)
+            meal_types_lists = self.__random_menu_types(meal_types, menu_plans)
 
             days_menu_plan.append(
                 DayMenuPlan(member,
@@ -23,10 +23,9 @@ class WeekMenu:
         return days_menu_plan
 
     @staticmethod
-    def __random_menu_types(menu_plans):
-        # TODO pull the Meal Types from the database
+    def __random_menu_types(meal_types, menu_plans):
         meal_types_lists = []
-        for name, member in MealType.__members__.items():
+        for name in meal_types:
             stuff = [item for item in menu_plans if str(item.menu_type) == str(name)]
             meal_types_lists.append(random.choice(stuff))
         return meal_types_lists
