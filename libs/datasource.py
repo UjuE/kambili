@@ -11,7 +11,7 @@ class MenuDataSource:
         config.DATABASE_URL = 'bolt://%s:%s@%s:%s' % (user, password, host, port)
 
     def get_menu_plans(self):
-        return reduce(lambda left, right: left + right, list(self.retrieve_menu_plan(x) for x in Meal.nodes))
+        return reduce(lambda left, right: left + right, list(self.retrieve_menu_plan(x) for x in Meal.nodes),[])
 
     def retrieve_menu_plan(self, meal):
         definition = dict(node_class=Meal_Type, direction=OUTGOING, relation_type=None, model=None)
