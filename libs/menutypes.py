@@ -1,12 +1,14 @@
 import random
+
 from libs.constants import Day, MealType
+
 
 class WeekMenu:
     def __init__(self, menu_plans):
         self.day_menu_plans = self.__create_day_menu_plans(menu_plans)
 
     def get(self, day):
-        return [x for x in self.day_menu_plans if str(x.get_day()) is str(day)][0]
+        return [x for x in self.day_menu_plans if str(x.get_day()) == str(day)][0]
 
     @staticmethod
     def __create_day_menu_plans(menu_plans):
@@ -31,7 +33,7 @@ class DayMenuPlan:
         self.menu_plans = menu_plans
 
     def get_menu_plan(self, menu_type):
-        return next(meal_plan for meal_plan in self.menu_plans if str(meal_plan.menu_type) is str(menu_type))
+        return next(meal_plan for meal_plan in self.menu_plans if str(meal_plan.menu_type) == str(menu_type))
 
     def get_day(self):
         return self.day
