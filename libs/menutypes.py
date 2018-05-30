@@ -6,19 +6,20 @@ class WeekMenu:
         self.day_menu_plans = self.__create_day_menu_plans(menu_plans)
 
     def get(self, day):
-        return filter(lambda x: str(x.get_day) is str(day), self.day_menu_plans)
+        return [x for x in self.day_menu_plans if str(x.get_day()) is str(day)][0]
 
     @staticmethod
     def __create_day_menu_plans(menu_plans):
         meal_types_lists = []
         for name, member in MealType.__members__.items():
-            meal_types_lists.append(list(filter(lambda item: str(item.menu_type) is member.describe(), menu_plans)))
+            meal_types_lists.extend([item for item in menu_plans if str(item.menu_type) == str(name)])
+
 
         days_menu_plan = []
         for name, member in Day.__members__.items():
             days_menu_plan.append(
                 DayMenuPlan(member,
-                            list(map(lambda menu_plan: random.choice(menu_plan), meal_types_lists))
+                            list(map(lambda menu_plan: random.choice(meal_types_lists), meal_types_lists))
                             ))
 
         return days_menu_plan
@@ -38,6 +39,9 @@ class DayMenuPlan:
     def __str__(self):
         return str(self.day) + " -> " + ', '.join(str(menu_plan) for menu_plan in self.menu_plans)
 
+    def __repr__(self):
+        return self.__str__()
+
 
 class MenuPlan:
     def __init__(self, menu_type: str, meal_name: str):
@@ -52,3 +56,6 @@ class MenuPlan:
 
     def __str__(self):
         return str(self.menu_type) + "(" + str(self.meal_name) + ")"
+
+    def __repr__(self):
+        return self.__str__()
