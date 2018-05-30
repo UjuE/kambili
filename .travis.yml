@@ -7,3 +7,6 @@ install:
 
 script:
   - python3 -m unittest discover -s tests
+
+notifications:
+    slack: conversinator:eCJM4feMnddtjb6cmnGIrZYn
