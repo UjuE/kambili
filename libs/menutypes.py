@@ -8,7 +8,7 @@ class WeekMenu:
         self.day_menu_plans = self.__create_day_menu_plans(menu_plans)
 
     def get(self, day):
-        return [x for x in self.day_menu_plans if str(x.get_day()) == str(day)][0]
+        return next([x for x in self.day_menu_plans if str(x.get_day()) == str(day)])
 
     def __create_day_menu_plans(self, menu_plans):
         days_menu_plan = []
@@ -22,7 +22,9 @@ class WeekMenu:
 
         return days_menu_plan
 
-    def __random_menu_types(self, menu_plans):
+    @staticmethod
+    def __random_menu_types(menu_plans):
+        # TODO pull the Meal Types from the database
         meal_types_lists = []
         for name, member in MealType.__members__.items():
             stuff = [item for item in menu_plans if str(item.menu_type) == str(name)]
