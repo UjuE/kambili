@@ -8,7 +8,7 @@ class WeekMenu:
         self.day_menu_plans = self.__create_day_menu_plans(menu_plans)
 
     def get(self, day):
-        return next([x for x in self.day_menu_plans if str(x.get_day()) == str(day)])
+        return next(iter([x for x in self.day_menu_plans if str(x.get_day()) == str(day)]), None)
 
     def __create_day_menu_plans(self, menu_plans):
         days_menu_plan = []
