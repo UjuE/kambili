@@ -1,4 +1,4 @@
-# Kambili
+# Kamrie
 Automated Menu generator
 
 # Integration Testing
