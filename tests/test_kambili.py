@@ -23,7 +23,7 @@ class KambiliTest(unittest.TestCase):
             ])
         self.datasource.get_meal_types = \
             MagicMock(return_value=[
-                "Breakfast","Lunch","Dinner"
+                "Breakfast", "Lunch", "Dinner"
             ])
         self.kambili = Kambili(self.datasource)
 
@@ -48,6 +48,7 @@ class KambiliTest(unittest.TestCase):
 
     def get_meals_with_menu_type(self, menu_type, day_menu):
         return [menu for menu in day_menu.menu_plans if menu.menu_type == menu_type]
+
 
 if __name__ == '__main__':
     unittest.main()

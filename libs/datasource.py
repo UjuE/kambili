@@ -5,7 +5,6 @@ from neomodel import config, OUTGOING, Traversal
 from libs.datatypes import Meal, Meal_Type
 from libs.menutypes import MenuPlan
 
-
 class MenuDataSource:
     def __init__(self, host, port, user, password):
         config.DATABASE_URL = 'bolt://%s:%s@%s:%s' % (user, password, host, port)

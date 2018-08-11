@@ -37,5 +37,6 @@ class DatasourceTest(unittest.TestCase):
 
         self.assertEqual(len(meal_types), 4)
 
+
 if __name__ == '__main__':
     unittest.main()
