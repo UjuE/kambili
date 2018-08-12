@@ -1,7 +1,7 @@
 from neomodel import config
 
-from datatypes import Meal_Type, Meal
-from menutypes import MenuPlan
+from libs.datatypes import Meal_Type, Meal
+from libs.menutypes import MenuPlan
 
 
 class MenuDataStore:

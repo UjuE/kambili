@@ -25,7 +25,6 @@ class WeekMenu:
     @staticmethod
     def __random_menu_types(meal_types, menu_plans):
         meal_types_lists = []
-        print("It is okay...",meal_types)
         for name in meal_types:
             stuff = [item for item in menu_plans if str(item.meal_type) == str(name)]
             meal_types_lists.append(random.choice(stuff))
