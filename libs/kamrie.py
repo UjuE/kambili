@@ -1,8 +1,8 @@
-from libs.datasource import MenuDataSource
-from libs.menutypes import WeekMenu
+from datasource import MenuDataSource
+from menutypes import WeekMenu
 
 
-class Kambili:
+class Kamrie:
     def __init__(self, data_source: MenuDataSource):
         self.data_source = data_source
 

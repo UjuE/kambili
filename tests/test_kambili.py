@@ -2,7 +2,7 @@ import unittest
 from unittest.mock import MagicMock
 
 from libs.datasource import MenuDataSource
-from libs.kambili import Kambili
+from libs.kamrie import Kamrie
 from libs.menutypes import MenuPlan
 
 
@@ -25,10 +25,10 @@ class KambiliTest(unittest.TestCase):
             MagicMock(return_value=[
                 "Breakfast", "Lunch", "Dinner"
             ])
-        self.kambili = Kambili(self.datasource)
+        self.kamrie = Kamrie(self.datasource)
 
     def test_all_days_must_have_menu_plans(self):
-        week_menu = self.kambili.generate_week_menu()
+        week_menu = self.kamrie.generate_week_menu()
 
         self.assertIsNotNone(week_menu.get("Monday"), "Week Menu must have entry for Monday")
         self.assertIsNotNone(week_menu.get("Tuesday"), "Week Menu must have entry for Tuesday")
@@ -39,7 +39,7 @@ class KambiliTest(unittest.TestCase):
         self.assertIsNotNone(week_menu.get("Sunday"), "Week Menu must have entry for Sunday")
 
     def test_monday_contains_only_one_of_each_meal_type(self):
-        week_menu = self.kambili.generate_week_menu()
+        week_menu = self.kamrie.generate_week_menu()
 
         monday_menu = week_menu.get("Monday")
         self.assertEqual(len(self.get_meals_with_menu_type("Breakfast", monday_menu)), 1)
