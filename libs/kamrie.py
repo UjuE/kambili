@@ -1,5 +1,5 @@
-from libs.datasource import MenuDataSource
-from libs.menutypes import WeekMenu
+from datasource import MenuDataSource
+from menutypes import WeekMenu
 
 
 class Kamrie:

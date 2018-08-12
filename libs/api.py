@@ -2,11 +2,10 @@ import json
 import os
 
 import jsonpickle as jsonpickle
+from datasource import MenuDataSource
 from flask import Flask
 from flask_restful import Resource, Api
-
-from libs.datasource import MenuDataSource
-from libs.kamrie import Kamrie
+from kamrie import Kamrie
 
 app = Flask(__name__)
 api = Api(app)
