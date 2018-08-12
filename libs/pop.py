@@ -1,8 +1,8 @@
 import os
-from libs.datastore import MenuDataStore
-import pandas as pd
+
 from openpyxl import load_workbook
 
+from libs.datastore import MenuDataStore
 from libs.menutypes import MenuPlan
 
 store = MenuDataStore(user=os.getenv('NEO_4J_USERNAME', 'Not found'),
@@ -10,7 +10,7 @@ store = MenuDataStore(user=os.getenv('NEO_4J_USERNAME', 'Not found'),
                       host=os.getenv('NEO_4J_URL', 'Not found'),
                       port=os.getenv('NEO_4J_BOLT_PORT', 'Not found'))
 
-xl = load_workbook('menu.xlsx')
+xl = load_workbook('/Users/ujuezeoke/Desktop/jump.xlsx')
 count = 2
 df1 = xl['Sheet1']
 
