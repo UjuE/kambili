@@ -1,14 +1,16 @@
 import unittest
-from unittest.mock import MagicMock
+from unittest.mock import MagicMock, patch
 
-from libs.datasource import MenuDataSource
+from libs.menudatasource import MenuDataSource
 from libs.kamrie import Kamrie
 from libs.menutypes import MenuPlan
 
 
-class KambiliTest(unittest.TestCase):
+class KamrieTest(unittest.TestCase):
+
     def setUp(self):
         self.datasource = MenuDataSource("", "", "", "")
+        # self.week_plan_data_access = MagicMock
         self.datasource.get_menu_plans = \
             MagicMock(return_value=[
                 MenuPlan("Breakfast", "Salmon and Spinach Omlette"),
@@ -25,9 +27,10 @@ class KambiliTest(unittest.TestCase):
             MagicMock(return_value=[
                 "Breakfast", "Lunch", "Dinner"
             ])
-        self.kamrie = Kamrie(self.datasource)
 
-    def test_all_days_must_have_menu_plans(self):
+    @patch('libs.weekplandataaccess.WeekMenuDataAccess')
+    def test_all_days_must_have_menu_plans(self, week_plan_data_access):
+        self.kamrie = Kamrie(self.datasource, week_plan_data_access)
         week_menu = self.kamrie.generate_week_menu()
 
         self.assertIsNotNone(week_menu.get("Monday"), "Week Menu must have entry for Monday")
@@ -38,7 +41,9 @@ class KambiliTest(unittest.TestCase):
         self.assertIsNotNone(week_menu.get("Saturday"), "Week Menu must have entry for Saturday")
         self.assertIsNotNone(week_menu.get("Sunday"), "Week Menu must have entry for Sunday")
 
-    def test_monday_contains_only_one_of_each_meal_type(self):
+    @patch('libs.weekplandataaccess.WeekMenuDataAccess')
+    def test_monday_contains_only_one_of_each_meal_type(self, week_plan_data_access):
+        self.kamrie = Kamrie(self.datasource, week_plan_data_access)
         week_menu = self.kamrie.generate_week_menu()
 
         monday_menu = week_menu.get("Monday")
@@ -47,7 +52,7 @@ class KambiliTest(unittest.TestCase):
         self.assertEqual(len(self.get_meals_with_menu_type("Dinner", monday_menu)), 1)
 
     def get_meals_with_menu_type(self, menu_type, day_menu):
-        return [menu for menu in day_menu.menu_plans if menu.menu_type == menu_type]
+        return [menu for menu in day_menu.meal_plans if menu.meal_type == menu_type]
 
 
 if __name__ == '__main__':

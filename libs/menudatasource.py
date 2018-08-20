@@ -1,9 +1,8 @@
 from functools import reduce
 
 from neomodel import config, OUTGOING, Traversal
-
-from datatypes import Meal, Meal_Type
-from menutypes import MenuPlan
+from .datatypes import Meal, Meal_Type
+from .menutypes import MenuPlan
 
 
 class MenuDataSource:

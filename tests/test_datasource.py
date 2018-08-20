@@ -2,9 +2,8 @@ import os
 import unittest
 
 from neomodel import db, clear_neo4j_database
-
-from libs.datasource import MenuDataSource
-from libs.datastore import MenuDataStore
+from libs.menudatasource import MenuDataSource
+from libs.menudatastore import MenuDataStore
 
 
 class DatasourceTest(unittest.TestCase):

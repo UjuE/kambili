@@ -1,6 +1,6 @@
 import random
 
-from constants import Day
+from .constants import Day
 
 
 class WeekMenu:

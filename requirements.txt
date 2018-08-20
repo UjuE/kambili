@@ -7,4 +7,5 @@ flask
 flask-restful
 virtualenv
 jsonpickle
-pandas
+flask_cors
+pymongo
